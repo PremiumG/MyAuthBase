@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    :root {
+      --bg-color: #f8f9fa;
+      --container-bg: white;
+      --text-primary: #333;
+      --text-secondary: #666;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+      --btn-danger: #dc3545;
+      --btn-danger-hover: #c82333;
+      --border-color: #dee2e6;
+      --card-bg: white;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #1a1a1a;
+        --container-bg: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #b3b3b3;
+        --shadow-color: rgba(255, 255, 255, 0.1);
+        --btn-danger: #dc3545;
+        --btn-danger-hover: #c82333;
+        --border-color: #495057;
+        --card-bg: #2d2d2d;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      padding: 2rem;
+      min-height: 100vh;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      background: var(--container-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      margin-bottom: 2rem;
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .dashboard-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .dashboard-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .dashboard-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .stats-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #007bff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .actions {
+      background: var(--container-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px var(--shadow-color);
+      text-align: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .actions h2 {
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin: 0.5rem;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background-color: var(--btn-danger);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: var(--btn-danger-hover);
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background-color: #5a6268;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Admin Dashboard</h1>
+      <p>Welcome, {{.Email}}! You are authenticated via JWT.</p>
+    </div>
+
+    <div class="dashboard-grid">
+      <div class="dashboard-card">
+        <span class="stats-number">42</span>
+        <h3>Active Users</h3>
+        <p>Currently logged in users</p>
+      </div>
+      
+      <div class="dashboard-card">
+        <span class="stats-number">128</span>
+        <h3>Total Users</h3>
+        <p>Registered user accounts</p>
+      </div>
+      
+      <div class="dashboard-card">
+        <span class="stats-number">24</span>
+        <h3>Sessions Today</h3>
+        <p>Login sessions in the last 24h</p>
+      </div>
+      
+      <div class="dashboard-card">
+        <span class="stats-number">99.9%</span>
+        <h3>Uptime</h3>
+        <p>System availability this month</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <h2>Quick Actions</h2>
+      <button class="btn-primary">Manage Users</button>
+      <button class="btn-secondary">View Logs</button>
+      <button class="btn-secondary">System Settings</button>
+      <button id="logoutBtn" class="btn-danger">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("jwt");
+      window.location.href = "/login";
+    });
+  </script>
+</body>
+</html>

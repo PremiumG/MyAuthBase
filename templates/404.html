@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --container-bg: white;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-muted: #6c757d;
+            --shadow-color: rgba(0,0,0,0.1);
+            --btn-primary: #007bff;
+            --btn-primary-hover: #0056b3;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --container-bg: #2d2d2d;
+                --text-primary: #ffffff;
+                --text-secondary: #b3b3b3;
+                --text-muted: #8e9297;
+                --shadow-color: rgba(255,255,255,0.1);
+                --btn-primary: #0d6efd;
+                --btn-primary-hover: #0b5ed7;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+        .error-title {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .error-message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--btn-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--btn-primary-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <div class="error-title">Page Not Found</div>
+        <div class="error-message">
+            The page you're looking for doesn't exist or has been moved.
+            Please check the URL or navigate back to our homepage.
+        </div>
+        <a href="/" class="btn">Go Home</a>
+    </div>
+</body>
+</html>

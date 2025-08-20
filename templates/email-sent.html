@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sent - AuthBase</title>
+    <style>
+        :root {
+            --bg-color: #f8f9fa;
+            --container-bg: white;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --success-color: #28a745;
+            --success-bg: #d1e7dd;
+            --success-border: #badbcc;
+            --btn-primary: #007bff;
+            --btn-primary-hover: #0056b3;
+            --btn-secondary: #6c757d;
+            --btn-secondary-hover: #5a6268;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --container-bg: #2d2d2d;
+                --text-primary: #ffffff;
+                --text-secondary: #b3b3b3;
+                --shadow-color: rgba(255, 255, 255, 0.1);
+                --success-color: #20c997;
+                --success-bg: #1a4a32;
+                --success-border: #2d5a3d;
+                --btn-primary: #0d6efd;
+                --btn-primary-hover: #0b5ed7;
+                --btn-secondary: #6c757d;
+                --btn-secondary-hover: #5a6268;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            background: var(--container-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--success-bg);
+            border: 3px solid var(--success-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 2.5rem;
+            color: var(--success-color);
+        }
+
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--success-color);
+        }
+
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .email-highlight {
+            font-weight: bold;
+            color: var(--success-color);
+        }
+
+        .instructions {
+            background: var(--success-bg);
+            border: 1px solid var(--success-border);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .instructions h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .instructions ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .instructions li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .instructions li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background-color: var(--btn-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--btn-primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: var(--btn-secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--btn-secondary-hover);
+        }
+
+        .footer-text {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .title {
+                font-size: 1.75rem;
+            }
+            
+            .actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                <path d="M3 7l9 6l9 -6" />
+            </svg>
+        </div>
+
+        <h1 class="title">Email Successfully Sent!</h1>
+        
+        <p class="message">
+            We've sent a verification email to <span class="email-highlight">your email address</span>. 
+            Please check your inbox and click the link to complete the process.
+        </p>
+
+        <div class="instructions">
+            <h3>Next Steps:</h3>
+            <ul>
+                <li>Check your email inbox for our message</li>
+                <li>Look in your spam/junk folder if you don't see it</li>
+                <li>Click the verification link in the email</li>
+                <li>Complete your account setup</li>
+            </ul>
+        </div>
+
+        <div class="actions">
+            <a href="/login" class="btn btn-primary">Go to Login</a>
+            <a href="/signup" class="btn btn-secondary">Send Another Email</a>
+        </div>
+
+        <p class="footer-text">
+            Didn't receive the email? Check your spam folder or contact support for assistance.
+        </p>
+    </div>
+</body>
+</html>

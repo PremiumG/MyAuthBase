@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Link - AuthBase</title>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --container-bg: white;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --shadow-color: rgba(0,0,0,0.1);
+            --warning-color: #ffc107;
+            --btn-primary: #007bff;
+            --btn-primary-hover: #0056b3;
+            --btn-secondary: #6c757d;
+            --btn-secondary-hover: #5a6268;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a1a1a;
+                --container-bg: #2d2d2d;
+                --text-primary: #ffffff;
+                --text-secondary: #b3b3b3;
+                --shadow-color: rgba(255,255,255,0.1);
+                --warning-color: #ffc107;
+                --btn-primary: #0d6efd;
+                --btn-primary-hover: #0b5ed7;
+                --btn-secondary: #6c757d;
+                --btn-secondary-hover: #5a6268;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .error-icon {
+            font-size: 48px;
+            color: var(--warning-color);
+            margin-bottom: 20px;
+        }
+        .error-title {
+            font-size: 24px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        .error-message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--btn-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--btn-primary-hover);
+        }
+        .btn-secondary {
+            background-color: var(--btn-secondary);
+        }
+        .btn-secondary:hover {
+            background-color: var(--btn-secondary-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-icon">⚠️</div>
+        <div class="error-title">Invalid or Expired Link</div>
+        <div class="error-message">
+            The link you clicked is either invalid, expired, or has already been used.
+            This could be a verification link, password reset link, or magic login link.
+            <br><br>
+            Please request a new link or try logging in normally.
+        </div>
+        <a href="/login" class="btn">Login</a>
+        <a href="/SignUp" class="btn btn-secondary">Register</a>
+    </div>
+</body>
+</html>
